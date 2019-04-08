@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const request = require('request-promise-native');
 
-const exchangeRates = functions.https.onRequest(async (req, res) => {
+const exchangeRates = functions.https.onRequest(async function(req, res) {
     const ratesRef = admin.database().ref('/wallet/exchangeRates');
     const rates = (await ratesRef.once('value')).val();
 
