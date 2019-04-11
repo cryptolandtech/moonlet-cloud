@@ -1,34 +1,40 @@
 {
-  "hosting": [{
-    "target": "moonlet-wallet",
-    "public": "hosting",
-    "rewrites": [
+  "hosting": [
+    {
+      "target": "moonlet-wallet",
+      "public": "hosting",
+      "rewrites": [
+          {
+              "source": "/api/exchangeRates",
+              "function": "exchangeRates"
+          }
+      ]
+    }, {
+      "appAssociation": "AUTO",
+      "target": "moonlet-website",
+      "public": "website",
+      "ignore": [
+        "**/*.php",
+        "**/*.json",
+        "wp-admin",
+        "comments",
+        "feed",
+        "wpautoterms",
+        "category",
+        "author",
+        "wp-json",
+        "wp-content/uploads/WP-STATIC-*",
+        "wp-content/uploads/ShortpixelBackups"
+      ],
+      "rewrites": [
+        { 
+            "source": "/links/**", 
+            "dynamicLinks": true 
+        },
         {
-            "source": "/api/exchangeRates",
-            "function": "exchangeRates"
+            "source": "/wp-json/**",
+            "function": "wpProxy"
         }
-    ]
-  }, {
-    "target": "moonlet-website",
-    "public": "website",
-    "ignore": [
-      "**/*.php",
-      "**/*.json",
-      "wp-admin",
-      "comments",
-      "feed",
-      "wpautoterms",
-      "category",
-      "author",
-      "wp-json",
-      "wp-content/uploads/WP-STATIC-*",
-      "wp-content/uploads/ShortpixelBackups"
-    ],
-    "rewrites": [
-      {
-          "source": "/wp-json/**",
-          "function": "wpProxy"
-      }
-  ]
-  }]
+      ]
+    }]
 }
