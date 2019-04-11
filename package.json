@@ -1,0 +1,20 @@
+{
+  "name": "moonlet-cloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "get-website": "rm -rf website && curl -D - https://moonlet.xyz/get-build.php --resolve \"moonlet.xyz:443:212.146.84.81\" -o website.zip && unzip website.zip -d website",
+    "deploy": "npm run get-website && firebase deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cryptolandtech/moonlet-cloud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cryptolandtech/moonlet-cloud/issues"
+  },
+  "homepage": "https://github.com/cryptolandtech/moonlet-cloud#readme"
+}
