@@ -12,6 +12,8 @@ const options = {
   ],
   directory: './website',
   recursive: true,
+  prettifyUrls: true,
+  filenameGenerator: 'bySiteStructure',
   urlFilter: function(url){
     return url.indexOf('https://moonlet.xyz') === 0 || url.indexOf('http://moonlet.xyz') === 0;
   }

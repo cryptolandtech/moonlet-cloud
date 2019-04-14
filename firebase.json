@@ -12,20 +12,7 @@
     }, {
       "appAssociation": "AUTO",
       "target": "moonlet-website",
-      "public": "website",
-      "ignore": [
-        "**/*.php",
-        "**/*.json",
-        "wp-admin",
-        "comments",
-        "feed",
-        "wpautoterms",
-        "category",
-        "author",
-        "wp-json",
-        "wp-content/uploads/WP-STATIC-*",
-        "wp-content/uploads/ShortpixelBackups"
-      ],
+      "public": "website/moonlet.xyz",
       "rewrites": [
         { 
             "source": "/links/**", 
