@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "get-website": "rm -rf website && curl -D - https://moonlet.xyz/get-build.php --resolve \"moonlet.xyz:443:212.146.84.81\" -o website.zip && unzip website.zip -d website",
+    "get-website": "rm -rf website && node scripts/scrape-website.js",
     "deploy": "npm run get-website && firebase deploy"
   },
   "repository": {
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/cryptolandtech/moonlet-cloud/issues"
   },
-  "homepage": "https://github.com/cryptolandtech/moonlet-cloud#readme"
+  "homepage": "https://github.com/cryptolandtech/moonlet-cloud#readme",
+  "devDependencies": {
+    "evil-dns": "^0.2.0",
+    "website-scraper": "^4.0.0"
+  }
 }
