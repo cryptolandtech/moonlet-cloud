@@ -1,24 +1,16 @@
-const scrape = require('website-scraper');
-var evilDns = require('evil-dns');
+
+const evilDns = require('evil-dns');
+const {scrapper} = require('../utils/scrapper');
 
 // String match
 evilDns.add('moonlet.xyz', '212.146.84.81');
 
-
-const options = {
-  urls: [
-    'https://moonlet.xyz/',
-    {url: 'https://moonlet.xyz/404.html', filename: '404.html'}
-  ],
-  directory: './website',
-  recursive: true,
-  prettifyUrls: true,
-  filenameGenerator: 'bySiteStructure',
-  urlFilter: function(url){
-    return url.indexOf('https://moonlet.xyz') === 0 || url.indexOf('http://moonlet.xyz') === 0;
-  }
-};
-
-scrape(options).then((result) => {
-    console.log('Done!');
+scrapper({
+    urls: [
+        'https://moonlet.xyz',
+        'https://moonlet.xyz/404.html',
+        'https://moonlet.xyz/favicon.ico'
+    ],
+    dest: './website/moonlet.xyz',
+    urlFilter: (url) => (url || "").startsWith('https://moonlet.xyz')
 });

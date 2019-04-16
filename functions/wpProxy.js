@@ -5,12 +5,12 @@ const proxy = httpProxy.createProxyServer(); // See (†)
 proxy.on('proxyReq', function(proxyReq, req, res, options) {
     if(req.method=="POST" && req.body){
         let body = req.body;
-        if (typeof req.body === "object") {
-            body = JSON.stringify(req.body);
-            console.log("POST", req.url, body);
-        }
+        // if (typeof req.body === "object") {
+        //     body = JSON.stringify(req.body);
+        //     console.log("POST", req.url, body);
+        // }
         proxyReq.write(body);
-        proxyReq.end();
+        proxyReq.end(); 
     }
 });
 

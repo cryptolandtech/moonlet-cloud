@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "get-website": "rm -rf website && node scripts/scrape-website.js",
-    "deploy": "npm run get-website && firebase deploy"
+    "scrape:website": "rm -rf website && node scripts/scrape-website.js",
+    "serve:website": "http-server website/moonlet.xyz -p 443 --ssl --cert utils/cert.pem --key utils/key.pem",
+    "deploy": "npm run scrape:website && firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,12 @@
   "devDependencies": {
     "evil-dns": "^0.2.0",
     "website-scraper": "^4.0.0"
+  },
+  "dependencies": {
+    "agentkeepalive": "^4.0.2",
+    "cheerio": "^1.0.0-rc.3",
+    "http-server": "^0.11.1",
+    "request": "^2.88.0",
+    "shelljs": "^0.8.3"
   }
 }
