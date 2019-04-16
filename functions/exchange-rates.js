@@ -5,7 +5,7 @@ const cors = require('cors')({origin: true});
 
 const exchangeRates = functions.https.onRequest(async function(req, res) {
     cors(req, res, () => {});
-    
+
     const ratesRef = admin.database().ref('/wallet/exchangeRates');
     const rates = (await ratesRef.once('value')).val();
 
@@ -32,7 +32,6 @@ const exchangeRates = functions.https.onRequest(async function(req, res) {
         } catch(error) {
             console.error({
                 endpoint,
-                response: data,
                 error
             });
         }   
