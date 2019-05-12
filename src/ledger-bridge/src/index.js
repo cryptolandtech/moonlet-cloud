@@ -27,14 +27,14 @@ const getApp = async (name) => {
 
 const sendResponse = (origin, data, response) => {
     const msg = Object.assign({}, data, {type: 'ledger-bridge-response'}, response);
-    console.log(msg);
+    // console.log(msg);
     window.top.postMessage(msg, origin);
 }
 
 window.addEventListener('message', async ({origin, data}) => {
     try {
         if (typeof data === 'object' && data.type === 'ledger-bridge' && apps[data.app]) {
-            console.log(origin, data);
+            // console.log(origin, data);
             const app = await getApp(data.app);
     
             if (app) {
