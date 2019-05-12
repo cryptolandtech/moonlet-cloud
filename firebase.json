@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "moonlet-wallet",
-      "public": "hosting",
+      "public": "hosting/moonlet-wallet.firebaseapp.com",
       "rewrites": [
           {
               "source": "/api/exchangeRates",
@@ -12,7 +12,7 @@
     }, {
       "appAssociation": "AUTO",
       "target": "moonlet-website",
-      "public": "website/moonlet.xyz",
+      "public": "hosting/moonlet.xyz",
       "rewrites": [
         { 
             "source": "/links/**", 
@@ -23,5 +23,8 @@
             "function": "wpProxy"
         }
       ]
-    }]
+    }],
+    "functions": {
+      "source": "src/functions"
+   }
 }

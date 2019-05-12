@@ -20,6 +20,7 @@
   "homepage": "https://github.com/cryptolandtech/moonlet-cloud#readme",
   "devDependencies": {
     "evil-dns": "^0.2.0",
+    "firebase-tools": "^6.9.2",
     "website-scraper": "^4.0.0"
   },
   "dependencies": {

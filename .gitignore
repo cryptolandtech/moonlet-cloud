@@ -64,6 +64,4 @@ node_modules/
 
 # dotenv environment variables file
 .env
-
-website
-website.zip
+hosting

@@ -11,6 +11,6 @@ scrapper({
         'https://moonlet.xyz/404.html',
         'https://moonlet.xyz/favicon.ico'
     ],
-    dest: './website/moonlet.xyz',
+    dest: './hosting/moonlet.xyz',
     urlFilter: (url) => (url || "").startsWith('https://moonlet.xyz')
 });

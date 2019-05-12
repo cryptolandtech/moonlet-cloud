@@ -17,7 +17,7 @@ const exchangeRates = functions.https.onRequest(async function(req, res) {
         // do update
         const endpoint = `https://min-api.cryptocompare.com/data/pricemulti?api_key=${ratesSettings.apiKey}&fsyms=${ratesSettings.from.toUpperCase()}&tsyms=${ratesSettings.to.toUpperCase()}`;
         try {
-            let data = JSON.parse(await request.get(endpoint));
+            let data = JSON.parse(await request.get(endpoint, {timeout: 2000}));
             
             if (data.Response && data.Response === 'Error') {
                 //throw new Error('Generic error');
@@ -25,10 +25,7 @@ const exchangeRates = functions.https.onRequest(async function(req, res) {
                     endpoint,
                     response: data
                 });
-            } else {
-                responseData = Object.assign({}, data, {lastUpdate: Date.now()});
-                await ratesRef.set(Object.assign({}, rates, {data: responseData}));
-            }
+            } 
         } catch(error) {
             console.error({
                 endpoint,
@@ -37,6 +34,8 @@ const exchangeRates = functions.https.onRequest(async function(req, res) {
         }   
     }
 
+    responseData.lastUpdate = Date.now();
+    await ratesRef.set(Object.assign({}, rates, {data: responseData}));
     res.send(responseData);
 });
 
