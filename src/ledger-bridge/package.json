@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Ledger Bridge for Moonlet Wallet",
   "scripts": {
-    "build": "preact build --no-prerender --dest ../../hosting/moonlet-wallet.firebaseapp.com/ledger-bridge",
-    "dev": "preact watch --port 8081"
+    "build": "preact build --no-prerender --no-service-worker --dest ../../hosting/moonlet-wallet.firebaseapp.com/ledger-bridge",
+    "dev": "preact watch --port 8081 --https"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "copy-webpack-plugin": "^5.0.3",
     "preact-cli": "^2.2.1",
     "preact-cli-plugin-fast-async": "^1.0.1"
   },
