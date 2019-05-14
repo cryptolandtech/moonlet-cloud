@@ -24,8 +24,8 @@ export class Eth {
         return this.app.getAddress(this.getPath(index, derivationIndex, path));
     }
 
-    signTransaction({index, derivationIndex, path, transaction}) {
-        return Promise.reject('NOT_IMPLEMENTED');
+    signTransaction({index, derivationIndex, path, txRaw}) {
+        return this.app.signTransaction(this.getPath(index, derivationIndex, path), txRaw);
     }
 
     getInfo() {

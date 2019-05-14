@@ -1,10 +1,16 @@
 import 'babel-polyfill';
 import TransportU2F from '@ledgerhq/hw-transport-u2f';
 import { Eth } from './apps/eth';
+import { setDebug, log } from './debug';
 
 const apps = {Eth};
 const appsInstances = {};
 let transport;
+
+const currentUrl = new URL(document.location.href);
+if (currentUrl.searchParams.get('debug')) {
+    setDebug(true);
+}
 
 const getTransport = async () => {
     if (!transport) {
@@ -27,14 +33,14 @@ const getApp = async (name) => {
 
 const sendResponse = (origin, data, response) => {
     const msg = Object.assign({}, data, {type: 'ledger-bridge-response'}, response);
-    // console.log(msg);
+    log('sendResponse', {msg, origin});
     window.top.postMessage(msg, origin);
 }
 
 window.addEventListener('message', async ({origin, data}) => {
     try {
         if (typeof data === 'object' && data.type === 'ledger-bridge' && apps[data.app]) {
-            // console.log(origin, data);
+            log('request', origin, data);
             const app = await getApp(data.app);
     
             if (app) {
@@ -58,4 +64,5 @@ window.addEventListener('message', async ({origin, data}) => {
     }
 });
 
+log('ledger-bridge-ready');
 window.top.postMessage({type: 'ledger-bridge-ready'}, '*');
