@@ -1,17 +1,36 @@
 {
   "hosting": [
     {
-      "target": "moonlet-wallet",
-      "public": "hosting/moonlet-wallet.firebaseapp.com",
+      "target": "api",
+      "public": "hosting/api.moonlet.xyz",
+      "rewrites": [
+          {
+              "source": "/exchangeRates",
+              "function": "exchangeRates"
+          },
+          {
+            "source": "/getFeaturesConfig",
+            "function": "getFeaturesConfig"
+          }
+      ]
+    },
+    {
+      "target": "static",
+      "public": "hosting/static.moonlet.xyz"
+    },
+    {
+      "target": "legacy",
+      "public": "hosting/static.moonlet.xyz",
       "rewrites": [
           {
               "source": "/api/exchangeRates",
               "function": "exchangeRates"
           }
       ]
-    }, {
+    }, 
+    {
       "appAssociation": "AUTO",
-      "target": "moonlet-website",
+      "target": "website",
       "public": "hosting/moonlet.xyz",
       "rewrites": [
         { 

@@ -5,11 +5,17 @@
   "targets": {
     "moonlet-wallet": {
       "hosting": {
-        "moonlet-wallet": [
-          "moonlet-wallet"
+        "api": [
+          "moonlet-api"
         ],
-        "moonlet-website": [
+        "static": [
+          "moonlet-static"
+        ],
+        "website": [
           "moonlet-website"
+        ],
+        "legacy": [
+          "moonlet-wallet"
         ]
       }
     }
