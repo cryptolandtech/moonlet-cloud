@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "scrape:website": "rm -rf website && node scripts/scrape-website.js",
+    "scrape:website": "rm -rf hosting/moonlet.xyz && node scripts/scrape-website.js",
     "serve:website": "http-server website/moonlet.xyz -p 443 --ssl --cert utils/cert.pem --key utils/key.pem",
     "build:ledger-bridge": "cd src/ledger-bridge && npm i && npm run build",
     "build:static": "mkdir -p hosting/static.moonlet.xyz && touch hosting/static.moonlet.xyz/index.html && npm run build:ledger-bridge",
