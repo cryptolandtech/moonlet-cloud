@@ -27,7 +27,14 @@ const FEATURES_CONFIG = {
     sendPageNameResolution: [
         {
             dimensions: {
+                env: [Env.PRODUCTION],
                 testnet: true
+            },
+            active: true
+        },
+        {
+            dimensions: {
+                env: [Env.LOCAL, Env.STAGING]
             },
             active: true
         }
