@@ -16,7 +16,8 @@ const keepAliveAgent = new Agent({
 const getUrl = (url, fileName) => {
     return new Promise((resolve, reject) => {
         request.get(url, {
-            agent: keepAliveAgent
+            agent: keepAliveAgent,
+            strictSSL: false
         }, (err, response, body) => {
             if (err) {
                 return reject({err, response});

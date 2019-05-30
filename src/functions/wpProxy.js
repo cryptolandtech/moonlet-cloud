@@ -20,7 +20,8 @@ const wpProxy = functions.https.onRequest(function(req, res) {
         target: 'https://212.146.84.81', 
         headers: {
             'Host': 'moonlet.xyz'
-        } 
+        },
+        secure: false
     });
 });
 
