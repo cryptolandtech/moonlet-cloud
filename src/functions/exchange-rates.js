@@ -25,7 +25,9 @@ const exchangeRates = functions.https.onRequest(async function(req, res) {
                     endpoint,
                     response: data
                 });
-            } 
+            } else {
+                Object.assign(responseData, data);
+            }
         } catch(error) {
             console.error({
                 endpoint,
