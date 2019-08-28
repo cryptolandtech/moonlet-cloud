@@ -7,7 +7,7 @@
     "scrape:website": "rm -rf hosting/moonlet.xyz && node scripts/scrape-website.js",
     "serve:website": "http-server website/moonlet.xyz -p 443 --ssl --cert utils/cert.pem --key utils/key.pem",
     "build:ledger-bridge": "cd src/ledger-bridge && npm i && npm run build",
-    "build:static": "mkdir -p hosting/static.moonlet.xyz && touch hosting/static.moonlet.xyz/index.html && npm run build:ledger-bridge",
+    "build:static": "mkdir -p hosting/static.moonlet.xyz && touch hosting/static.moonlet.xyz/index.html && npm run build:ledger-bridge && cp -r src/email hosting/static.moonlet.xyz/",
     "deploy:website": "npm run scrape:website && firebase deploy --only hosting:website",
     "deploy:static": "npm run build:static && firebase deploy --only hosting:static && firebase deploy --only hosting:legacy",
     "deploy:api": "mkdir -p hosting/api.moonlet.xyz && touch hosting/api.moonlet.xyz/index.html && firebase deploy --only functions && firebase deploy --only hosting:api"
@@ -30,6 +30,7 @@
   "dependencies": {
     "agentkeepalive": "^4.0.2",
     "cheerio": "^1.0.0-rc.3",
+    "firebase-functions": "^3.0.1",
     "http-server": "^0.11.1",
     "request": "^2.88.0",
     "shelljs": "^0.8.3"

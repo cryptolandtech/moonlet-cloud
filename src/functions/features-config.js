@@ -28,7 +28,7 @@ const FEATURES_CONFIG = {
         {
             dimensions: {
                 env: [Env.PRODUCTION],
-                testnet: true
+                // testnet: true
             },
             active: true
         },
