@@ -16,6 +16,11 @@
   "dependencies": {
     "@ledgerhq/hw-app-eth": "^4.55.0",
     "@ledgerhq/hw-transport-u2f": "^4.55.0",
-    "babel-polyfill": "^6.26.0"
+    "@ledgerhq/hw-transport-webusb": "^4.69.0",
+    "@zilliqa-js/account": "^0.7.5",
+    "@zilliqa-js/crypto": "^0.7.5",
+    "@zilliqa-js/util": "^0.7.1",
+    "babel-polyfill": "^6.26.0",
+    "zil-ledger-js-interface": "^0.1.2"
   }
 }

@@ -1,9 +1,11 @@
 import 'babel-polyfill';
 import TransportU2F from '@ledgerhq/hw-transport-u2f';
+//import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
 import { Eth } from './apps/eth';
+import { Zil } from './apps/zil';
 import { setDebug, log } from './debug';
 
-const apps = {Eth};
+const apps = {Eth, Zil};
 const appsInstances = {};
 let transport;
 
@@ -15,6 +17,7 @@ if (currentUrl.searchParams.get('debug')) {
 const getTransport = async () => {
     if (!transport) {
         transport = await TransportU2F.create();
+        //transport.debug = console.log;
     }
     return transport;
 }
@@ -30,6 +33,7 @@ const getApp = async (name) => {
     } 
     return appsInstances[name];
 }
+window.getApp = getApp;
 
 const sendResponse = (origin, data, response) => {
     const msg = Object.assign({}, data, {type: 'ledger-bridge-response'}, response);
