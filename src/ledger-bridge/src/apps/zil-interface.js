@@ -115,7 +115,7 @@ class Zilliqa {
 
         var txnBytes = txnEncoder(txnParams);
         const message = JSON.stringify({"Encoded transaction" : txnBytes.toString('hex')}, null, 2);
-        console.log(chalk.green(message));
+        // console.log(chalk.green(message));
 
         const STREAM_LEN = 128; // Stream in batches of STREAM_LEN bytes each.
         var txn1Bytes;
@@ -139,11 +139,11 @@ class Zilliqa {
         const payload = Buffer.concat([indexBytes, hostBytesLeftBytes, txn1SizeBytes, txn1Bytes]);
 
         let transport = this.transport;
-        console.log("=>", payload.toString("hex"));
+        // console.log("=>", payload.toString("hex"));
         return transport
                 .send(CLA, INS.signTxn, P1, P2, payload)
                 .then(function cb (response) {
-                    console.log("<=", response.toString("hex"));
+                    // console.log("<=", response.toString("hex"));
                     // Keep streaming data into the device till we run out of it.
                     // See signTxn.c:istream_callback() for how this is used.
                     // Each time the bytes sent consists of:
@@ -164,8 +164,9 @@ class Zilliqa {
                         txnNSizeBytes.writeInt32LE(txnNBytes.length);
                         hostBytesLeftBytes.writeInt32LE(txnBytes.length);
                         const payload = Buffer.concat([hostBytesLeftBytes, txnNSizeBytes, txnNBytes]);
-                        console.log("=>", payload.toString("hex"));
-                        return transport.exchange(payload).then(cb);
+                        // console.log("=>", payload.toString("hex"));
+                        // return transport.exchange(payload).then(cb);
+                        return transport.send(CLA, INS.signTxn, P1, P2, payload).then(cb);
                     }
                     return response;
                 })

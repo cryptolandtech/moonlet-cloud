@@ -28,6 +28,7 @@
     "website-scraper": "^4.0.0"
   },
   "dependencies": {
+    "@ledgerhq/hw-transport-u2f": "^4.68.4",
     "agentkeepalive": "^4.0.2",
     "cheerio": "^1.0.0-rc.3",
     "firebase-functions": "^3.0.1",
