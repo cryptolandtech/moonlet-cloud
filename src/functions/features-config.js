@@ -19,7 +19,7 @@ const FEATURES_CONFIG = {
     hwWallet: [
         {
             dimensions: {
-                env: [Env.LOCAL, Env.STAGING]
+                env: [Env.PRODUCTION, Env.LOCAL, Env.STAGING]
             },
             active: true
         }
